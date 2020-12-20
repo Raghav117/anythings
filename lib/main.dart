@@ -55,9 +55,7 @@ class _MyAppState extends State<MyApp> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Image.asset(
-                        'assets/Splash Screen.jpg',
-                        height: 300,
-                        width: 300,
+                        'assets/logo.png',
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 10.0),

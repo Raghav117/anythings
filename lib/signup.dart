@@ -54,9 +54,9 @@ class _SignupState extends State<Signup> {
                     ),
                     TextField(
                       decoration: InputDecoration(
-                          hintText: "Enter Your Email Address",
+                          hintText: "Enter Your Mobile Number",
                           prefixIcon: Icon(
-                            Icons.email,
+                            Icons.mobile_friendly,
                             color: Colors.lightBlue,
                           )),
                     ),
@@ -65,9 +65,9 @@ class _SignupState extends State<Signup> {
                     ),
                     TextField(
                       decoration: InputDecoration(
-                          hintText: "Enter Your Mobile Number",
+                          hintText: "Enter Your Email Address",
                           prefixIcon: Icon(
-                            Icons.mobile_friendly,
+                            Icons.email,
                             color: Colors.lightBlue,
                           )),
                     ),
