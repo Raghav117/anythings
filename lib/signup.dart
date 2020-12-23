@@ -29,47 +29,64 @@ class _SignupState extends State<Signup> {
               child: Container(
                 child: Column(
                   children: [
-                    TextField(
-                      decoration: InputDecoration(
-                          hintText: "Enter Your Name",
-                          prefixIcon: Icon(
-                            Icons.person,
-                            color: Colors.lightBlue,
-                          )),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: TextField(
+                        decoration: InputDecoration(
+                            border: OutlineInputBorder(),
+                            hintText: "Enter Your Name",
+                            prefixIcon: Icon(
+                              Icons.person,
+                              color: Colors.lightBlue,
+                            )),
+                      ),
                     ),
                     SizedBox(
                       height: 5,
                     ),
-                    TextField(
-                      obscureText: true,
-                      decoration: InputDecoration(
-                          hintText: "Enter Password",
-                          prefixIcon: Icon(
-                            Icons.lock,
-                            color: Colors.lightBlue,
-                          )),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: TextField(
+                        obscureText: true,
+                        decoration: InputDecoration(
+                            border: OutlineInputBorder(),
+                            hintText: "Enter Password",
+                            prefixIcon: Icon(
+                              Icons.lock,
+                              color: Colors.lightBlue,
+                            )),
+                      ),
                     ),
                     SizedBox(
                       height: 5,
                     ),
-                    TextField(
-                      decoration: InputDecoration(
-                          hintText: "Enter Your Mobile Number",
-                          prefixIcon: Icon(
-                            Icons.mobile_friendly,
-                            color: Colors.lightBlue,
-                          )),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: TextField(
+                        decoration: InputDecoration(
+                            border: OutlineInputBorder(),
+                            hintText: "Enter Your Mobile Number",
+                            prefixIcon: Icon(
+                              Icons.mobile_friendly,
+                              color: Colors.lightBlue,
+                            )),
+                      ),
                     ),
                     SizedBox(
                       height: 5,
                     ),
-                    TextField(
-                      decoration: InputDecoration(
-                          hintText: "Enter Your Email Address",
-                          prefixIcon: Icon(
-                            Icons.email,
-                            color: Colors.lightBlue,
-                          )),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: TextField(
+                        decoration: InputDecoration(
+                            border: OutlineInputBorder(),
+                            // enabledBorder: InputBorder.none,
+                            hintText: "Enter Your Email Address",
+                            prefixIcon: Icon(
+                              Icons.email,
+                              color: Colors.lightBlue,
+                            )),
+                      ),
                     ),
                     SizedBox(
                       height: 30,

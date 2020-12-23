@@ -24,22 +24,30 @@ class _SigninState extends State<Signin> {
             child: Container(
               child: Column(
                 children: [
-                  TextField(
-                    decoration: InputDecoration(
-                        hintText: "Enter Your Email or Mobile Number",
-                        prefixIcon: Icon(
-                          Icons.person,
-                          color: Colors.lightBlue,
-                        )),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: TextField(
+                      decoration: InputDecoration(
+                          border: OutlineInputBorder(),
+                          hintText: "Enter Your Email or Mobile Number",
+                          prefixIcon: Icon(
+                            Icons.person,
+                            color: Colors.lightBlue,
+                          )),
+                    ),
                   ),
-                  TextField(
-                    obscureText: true,
-                    decoration: InputDecoration(
-                        hintText: "Enter Password",
-                        prefixIcon: Icon(
-                          Icons.lock,
-                          color: Colors.lightBlue,
-                        )),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: TextField(
+                      obscureText: true,
+                      decoration: InputDecoration(
+                          border: OutlineInputBorder(),
+                          hintText: "Enter Password",
+                          prefixIcon: Icon(
+                            Icons.lock,
+                            color: Colors.lightBlue,
+                          )),
+                    ),
                   ),
                   SizedBox(
                     height: 30,
