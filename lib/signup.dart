@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'screens/home.dart';
+
 class Signup extends StatefulWidget {
   @override
   _SignupState createState() => _SignupState();
@@ -92,7 +94,14 @@ class _SignupState extends State<Signup> {
                       height: 30,
                     ),
                     RaisedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.of(context)
+                              .pushReplacement(MaterialPageRoute(
+                            builder: (context) {
+                              return Home();
+                            },
+                          ));
+                        },
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(40)),
                         color: Colors.lightBlue,
