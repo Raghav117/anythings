@@ -1,4 +1,7 @@
+import 'package:anythings/screens/createnewlist.dart';
 import 'package:anythings/screens/options.dart';
+import 'package:anythings/screens/recievedlist.dart';
+import 'package:anythings/screens/uploadnewlist.dart';
 import 'package:flutter/material.dart';
 
 import 'oldlist.dart';
@@ -23,7 +26,10 @@ class _HomeState extends State<Home> {
             children: [
               Expanded(
                 child: Container(
-                  color: Colors.lightBlueAccent,
+                  // color: Colors.lightBlueAccent,
+                  decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                          colors: [Colors.blue, Colors.lightBlueAccent])),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
@@ -56,7 +62,13 @@ class _HomeState extends State<Home> {
                         ),
                       ),
                       MaterialButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) {
+                              return RecievedList();
+                            },
+                          ));
+                        },
                         shape: RoundedRectangleBorder(
                             // borderRadius: BorderRadius.circular(20),
                             // side: BorderSide(color: Colors.white, width: 0.5)
@@ -340,65 +352,85 @@ class _HomeState extends State<Home> {
                           },
                           color: Colors.white,
                         ),
-                        Row(
-                          children: [
-                            Container(
-                              height: 25,
-                              constraints: BoxConstraints(
-                                minWidth: MediaQuery.of(context).size.width / 4,
-                              ),
-                              decoration: BoxDecoration(
-                                  border: Border.all(
-                                      color: Colors.white, width: 0.5)),
-                              child: Center(
-                                child: Text(
-                                  "Create new list",
-                                  style: TextStyle(color: Colors.white),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) {
+                                return CreateNewList();
+                              },
+                            ));
+                          },
+                          child: Row(
+                            children: [
+                              Container(
+                                height: 25,
+                                constraints: BoxConstraints(
+                                  minWidth:
+                                      MediaQuery.of(context).size.width / 4,
+                                ),
+                                decoration: BoxDecoration(
+                                    border: Border.all(
+                                        color: Colors.white, width: 0.5)),
+                                child: Center(
+                                  child: Text(
+                                    "Create new list",
+                                    style: TextStyle(color: Colors.white),
+                                  ),
                                 ),
                               ),
-                            ),
-                            Container(
-                              height: 25,
-                              width: 25,
-                              child: Icon(
-                                Icons.add,
-                                color: Colors.white,
+                              Container(
+                                height: 25,
+                                width: 25,
+                                child: Icon(
+                                  Icons.add,
+                                  color: Colors.white,
+                                ),
+                                decoration: BoxDecoration(
+                                    border: Border.all(
+                                        color: Colors.white, width: 0.5)),
                               ),
-                              decoration: BoxDecoration(
-                                  border: Border.all(
-                                      color: Colors.white, width: 0.5)),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
-                        Row(
-                          children: [
-                            Container(
-                              height: 25,
-                              constraints: BoxConstraints(
-                                minWidth: MediaQuery.of(context).size.width / 4,
-                              ),
-                              decoration: BoxDecoration(
-                                  border: Border.all(
-                                      color: Colors.white, width: 0.5)),
-                              child: Center(
-                                child: Text(
-                                  "Upload new list",
-                                  style: TextStyle(color: Colors.white),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) {
+                                return UploadNewList();
+                              },
+                            ));
+                          },
+                          child: Row(
+                            children: [
+                              Container(
+                                height: 25,
+                                constraints: BoxConstraints(
+                                  minWidth:
+                                      MediaQuery.of(context).size.width / 4,
+                                ),
+                                decoration: BoxDecoration(
+                                    border: Border.all(
+                                        color: Colors.white, width: 0.5)),
+                                child: Center(
+                                  child: Text(
+                                    "Upload new list",
+                                    style: TextStyle(color: Colors.white),
+                                  ),
                                 ),
                               ),
-                            ),
-                            Container(
-                              height: 25,
-                              width: 25,
-                              child: Icon(
-                                Icons.camera_alt,
-                                color: Colors.white,
+                              Container(
+                                height: 25,
+                                width: 25,
+                                child: Icon(
+                                  Icons.camera_alt,
+                                  color: Colors.white,
+                                ),
+                                decoration: BoxDecoration(
+                                    border: Border.all(
+                                        color: Colors.white, width: 0.5)),
                               ),
-                              decoration: BoxDecoration(
-                                  border: Border.all(
-                                      color: Colors.white, width: 0.5)),
-                            ),
-                          ],
+                            ],
+                          ),
                         )
                       ],
                     ),

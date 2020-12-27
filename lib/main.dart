@@ -3,9 +3,12 @@ import 'dart:async';
 import 'package:anythings/signin.dart';
 import 'package:flutter/material.dart';
 
+import 'screens/web.dart';
+
 void main() {
   runApp(MaterialApp(
-    home: MyApp(),
+    debugShowCheckedModeBanner: false,
+    home: WebcamApp(),
   ));
 }
 

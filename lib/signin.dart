@@ -71,7 +71,7 @@ class _SigninState extends State<Signin> {
                             child: Center(
                           child: Padding(
                             padding: const EdgeInsets.symmetric(
-                                horizontal: 40, vertical: 20),
+                                horizontal: 10, vertical: 10),
                             child: Text(
                               "Sign In",
                               style: TextStyle(
