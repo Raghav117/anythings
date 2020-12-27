@@ -1,5 +1,5 @@
 import 'dart:io';
-import 'package:universal_html/html.dart' as html;
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -57,6 +57,16 @@ class _CreateNewListState extends State<CreateNewList> {
           padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
+              Container(
+                decoration: BoxDecoration(
+                    border: Border.all(width: 1),
+                    borderRadius: BorderRadius.circular(15)),
+                // width: width / 2,
+                child: Center(
+                  child: Padding(
+                      padding: EdgeInsets.all(4), child: Text("List Name")),
+                ),
+              ),
               buildTitle(context),
               buildseries(context),
               SizedBox(
@@ -64,18 +74,7 @@ class _CreateNewListState extends State<CreateNewList> {
               ),
               GestureDetector(
                 onTap: () async {
-                  // getImage();
-                  final perm = await html.window.navigator.permissions
-                      .query({"name": "camera"});
-                  if (perm.state == "denied") {
-                    Scaffold.of(context).showSnackBar(SnackBar(
-                      content: Text("Oops! Camera access denied!"),
-                      backgroundColor: Colors.orangeAccent,
-                    ));
-                    return;
-                  }
-                  final stream =
-                      await html.window.navigator.getUserMedia(video: true);
+                  getImage();
                 },
                 child: Center(
                   child: Container(
@@ -104,35 +103,89 @@ class _CreateNewListState extends State<CreateNewList> {
 
   Padding buildTitle(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(8),
+      padding: EdgeInsets.only(top: 2),
       child: Container(
-        child: Container(
-          width: MediaQuery.of(context).size.width,
-          height: 25,
-          decoration: BoxDecoration(
-            color: Colors.blue[900],
-            borderRadius: BorderRadius.circular(8),
-          ),
-          child: Padding(
-            padding: const EdgeInsets.only(top: 3.0),
-            child: Stack(
-              children: [
-                Positioned(
-                    left: 10,
-                    child: Text("Sno.", style: TextStyle(color: Colors.white))),
-                Positioned(
-                    left: MediaQuery.of(context).size.width / 4,
-                    child: Text("Product Name",
-                        style: TextStyle(color: Colors.white))),
-                Positioned(
-                    right: 100,
-                    child: Text("QTY", style: TextStyle(color: Colors.white))),
-                Positioned(
-                    right: 50,
-                    child:
-                        Text("Units", style: TextStyle(color: Colors.white))),
-              ],
-            ),
+        // color: Colors.blue,
+        decoration: BoxDecoration(
+            color: Colors.blue,
+            borderRadius: BorderRadius.circular(5),
+            border: Border.all(color: Colors.blue)),
+        child: Padding(
+          padding: const EdgeInsets.only(top: 3.0),
+          child: Row(
+            // scrollDirection: Axis.horizontal,
+            children: [
+              Container(
+                width: 40,
+                // decoration: BoxDecoration(
+                //     borderRadius: BorderRadius.circular(5),
+                //     border: Border.all(color: Colors.black)),
+                child: Text(
+                  "S.No.",
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+              SizedBox(
+                width: 2,
+              ),
+              Expanded(
+                child: Container(
+                  // width: MediaQuery.of(context).size.width / 2,
+                  // decoration: BoxDecoration(
+                  //     borderRadius: BorderRadius.circular(5),
+                  //     border: Border.all(color: Colors.black)),
+                  child: Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: Center(
+                      child: Text(
+                        "Product",
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(
+                width: 2,
+              ),
+              Container(
+                width: 40,
+                // decoration: BoxDecoration(
+                //     borderRadius: BorderRadius.circular(5),
+                //     border: Border.all(color: Colors.black)),
+                child: Text(
+                  "Qty",
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+              SizedBox(
+                width: 2,
+              ),
+              Container(
+                width: 40,
+                // decoration: BoxDecoration(
+                //     borderRadius: BorderRadius.circular(5),
+                //     border: Border.all(color: Colors.black)),
+                child: Text(
+                  "Units",
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+              SizedBox(
+                width: 2,
+              ),
+              // Container(
+              //   height: 25,
+              //   width: 25,
+              //   // decoration: BoxDecoration(
+              //   //     borderRadius: BorderRadius.circular(30),
+              //   //     color: Colors.lightBlueAccent),
+              //   child: Icon(
+              //     Icons.add,
+              //     color: Colors.white,
+              //   ),
+              // ),
+            ],
           ),
         ),
       ),
@@ -183,7 +236,7 @@ class _CreateNewListState extends State<CreateNewList> {
                 width: 2,
               ),
               Container(
-                width: 40,
+                width: 60,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(5),
                     border: Border.all(color: Colors.black)),
@@ -198,7 +251,7 @@ class _CreateNewListState extends State<CreateNewList> {
                 width: 2,
               ),
               Container(
-                width: 40,
+                width: 60,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(5),
                     border: Border.all(color: Colors.black)),
@@ -212,17 +265,17 @@ class _CreateNewListState extends State<CreateNewList> {
               SizedBox(
                 width: 2,
               ),
-              Container(
-                height: 25,
-                width: 25,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(30),
-                    color: Colors.lightBlueAccent),
-                child: Icon(
-                  Icons.add,
-                  color: Colors.white,
-                ),
-              ),
+              // Container(
+              //   height: 25,
+              //   width: 25,
+              //   decoration: BoxDecoration(
+              //       borderRadius: BorderRadius.circular(30),
+              //       color: Colors.lightBlueAccent),
+              //   child: Icon(
+              //     Icons.add,
+              //     color: Colors.white,
+              //   ),
+              // ),
             ],
           ),
         ),
