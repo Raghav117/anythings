@@ -1,9 +1,10 @@
 import 'package:anythings/screens/createnewlist.dart';
 import 'package:anythings/screens/options.dart';
 import 'package:anythings/screens/recievedlist.dart';
+import 'package:anythings/screens/sharedDetails.dart';
 import 'package:anythings/screens/uploadnewlist.dart';
 import 'package:flutter/material.dart';
-
+import 'package:anythings/screens/sharescreen.dart';
 import 'oldlist.dart';
 import 'settings.dart';
 
@@ -25,6 +26,7 @@ class _HomeState extends State<Home> {
           child: Row(
             children: [
               Expanded(
+                flex: 2,
                 child: Container(
                   // color: Colors.lightBlueAccent,
                   decoration: BoxDecoration(
@@ -33,23 +35,6 @@ class _HomeState extends State<Home> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      MaterialButton(
-                        onPressed: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) {
-                              return Settings();
-                            },
-                          ));
-                        },
-                        shape: RoundedRectangleBorder(
-                            // borderRadius: BorderRadius.circular(20),
-                            // side: BorderSide(color: Colors.white, width: 0.5)
-                            ),
-                        child: Text(
-                          "Settings",
-                          style: TextStyle(color: Colors.white),
-                        ),
-                      ),
                       MaterialButton(
                         onPressed: () {},
                         shape: RoundedRectangleBorder(
@@ -106,14 +91,29 @@ class _HomeState extends State<Home> {
                           style: TextStyle(color: Colors.white),
                         ),
                       ),
+                      MaterialButton(
+                        onPressed: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) {
+                              return Settings();
+                            },
+                          ));
+                        },
+                        shape: RoundedRectangleBorder(
+                            // borderRadius: BorderRadius.circular(20),
+                            // side: BorderSide(color: Colors.white, width: 0.5)
+                            ),
+                        child: Text(
+                          "Settings",
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ),
                     ],
                   ),
                 ),
               ),
               Expanded(
-                child: Container(),
-              ),
-              Expanded(
+                flex: 1,
                 child: Container(),
               ),
 
@@ -373,7 +373,7 @@ class _HomeState extends State<Home> {
                                         color: Colors.white, width: 0.5)),
                                 child: Center(
                                   child: Text(
-                                    "Create new list",
+                                    "  Create new list  ",
                                     style: TextStyle(color: Colors.white),
                                   ),
                                 ),
@@ -413,7 +413,7 @@ class _HomeState extends State<Home> {
                                         color: Colors.white, width: 0.5)),
                                 child: Center(
                                   child: Text(
-                                    "Upload new list",
+                                    "  Upload new list  ",
                                     style: TextStyle(color: Colors.white),
                                   ),
                                 ),
@@ -434,43 +434,46 @@ class _HomeState extends State<Home> {
                         )
                       ],
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Row(
-                          children: [
-                            IconButton(
-                              onPressed: () {},
-                              icon: Icon(
-                                Icons.circle,
-                                size: 10,
-                                color: Colors.white,
-                              ),
-                            ),
-                            Text(
-                              "Personal",
-                              style: TextStyle(color: Colors.white),
-                            )
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            IconButton(
-                              onPressed: () {},
-                              icon: Icon(
-                                Icons.blur_circular,
-                                size: 10,
-                                color: Colors.white,
-                              ),
-                            ),
-                            Text(
-                              "Business",
-                              style: TextStyle(color: Colors.white),
-                            )
-                          ],
-                        )
-                      ],
+                    SizedBox(
+                      height: 50,
                     )
+                    // Row(
+                    //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    //   children: [
+                    //     Row(
+                    //       children: [
+                    //         IconButton(
+                    //           onPressed: () {},
+                    //           icon: Icon(
+                    //             Icons.circle,
+                    //             size: 10,
+                    //             color: Colors.white,
+                    //           ),
+                    //         ),
+                    //         Text(
+                    //           "Personal",
+                    //           style: TextStyle(color: Colors.white),
+                    //         )
+                    //       ],
+                    //     ),
+                    //     Row(
+                    //       children: [
+                    //         IconButton(
+                    //           onPressed: () {},
+                    //           icon: Icon(
+                    //             Icons.blur_circular,
+                    //             size: 10,
+                    //             color: Colors.white,
+                    //           ),
+                    //         ),
+                    //         Text(
+                    //           "Business",
+                    //           style: TextStyle(color: Colors.white),
+                    //         )
+                    //       ],
+                    //     )
+                    //   ],
+                    // )
                   ],
                 ),
               ),
@@ -532,16 +535,36 @@ Widget tile(context) {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Row(children: [
-                      Icon(
-                        Icons.menu_open,
-                        color: Colors.black,
-                        size: 20,
+                      InkWell(
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) {
+                              return ShareScreen();
+                            },
+                          ));
+                        },
+                        child: Icon(
+                          Icons.share,
+                          color: Colors.grey,
+                          size: 25,
+                        ),
                       ),
-                      Icon(
-                        Icons.access_alarm_rounded,
-                        color: Colors.black,
-                        size: 20,
-                      ),
+
+                      //! *********************  Reuse Code  *************************
+                      // InkWell(
+                      //   onTap: () {
+                      //     Navigator.of(context).push(MaterialPageRoute(
+                      //       builder: (context) {
+                      //         return SharedDetails();
+                      //       },
+                      //     ));
+                      //   },
+                      //   child: Icon(
+                      //     Icons.access_alarm_rounded,
+                      //     color: Colors.black,
+                      //     size: 20,
+                      //   ),
+                      // )
                     ]),
                     Text(
                       "In Process: 12/30",

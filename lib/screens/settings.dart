@@ -18,6 +18,9 @@ class _SettingsState extends State<Settings> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              SizedBox(
+                height: 50,
+              ),
               FlatButton(
                 onPressed: () {
                   Navigator.pop(context);
@@ -82,6 +85,12 @@ class _SettingsState extends State<Settings> {
                   setState(() {});
                 },
                 value: sliderValue,
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Center(
+                child: Text("$sliderValue" + " minutes"),
               ),
               SizedBox(
                 height: 10,

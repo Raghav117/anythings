@@ -11,6 +11,7 @@ class _SignupState extends State<Signup> {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
     return Scaffold(
       // resizeToAvoidBottomInset: false,
       body: SingleChildScrollView(
@@ -18,7 +19,7 @@ class _SignupState extends State<Signup> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             SizedBox(
-              height: width / 2.5,
+              height: height / 8,
             ),
             Center(
                 child: Column(
