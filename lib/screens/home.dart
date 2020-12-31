@@ -365,21 +365,21 @@ class _HomeState extends State<Home> {
                               Container(
                                 height: 25,
                                 constraints: BoxConstraints(
-                                  minWidth:
-                                      MediaQuery.of(context).size.width / 4,
-                                ),
+                                    minWidth:
+                                        MediaQuery.of(context).size.width / 3,
+                                    minHeight: 40),
                                 decoration: BoxDecoration(
                                     border: Border.all(
                                         color: Colors.white, width: 0.5)),
                                 child: Center(
                                   child: Text(
-                                    "  Create new list  ",
+                                    "Create new list",
                                     style: TextStyle(color: Colors.white),
                                   ),
                                 ),
                               ),
                               Container(
-                                height: 25,
+                                height: 40,
                                 width: 25,
                                 child: Icon(
                                   Icons.add,
@@ -405,21 +405,21 @@ class _HomeState extends State<Home> {
                               Container(
                                 height: 25,
                                 constraints: BoxConstraints(
-                                  minWidth:
-                                      MediaQuery.of(context).size.width / 4,
-                                ),
+                                    minWidth:
+                                        MediaQuery.of(context).size.width / 3,
+                                    minHeight: 40),
                                 decoration: BoxDecoration(
                                     border: Border.all(
                                         color: Colors.white, width: 0.5)),
                                 child: Center(
                                   child: Text(
-                                    "  Upload new list  ",
+                                    "Upload new list",
                                     style: TextStyle(color: Colors.white),
                                   ),
                                 ),
                               ),
                               Container(
-                                height: 25,
+                                height: 40,
                                 width: 25,
                                 child: Icon(
                                   Icons.camera_alt,

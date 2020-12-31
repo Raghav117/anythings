@@ -14,6 +14,14 @@ class _CreateNewListState extends State<CreateNewList> {
   var _image;
   final picker = ImagePicker();
   List<Product> products = List();
+  @override
+  void initState() {
+    super.initState();
+    Product p = Product(dropdownvalue, false);
+
+    products.add(p);
+    setState(() {});
+  }
 
   int dropdownvalue = 0;
 
@@ -25,8 +33,9 @@ class _CreateNewListState extends State<CreateNewList> {
     setState(() {
       if (pickedFile != null) {
         _image = File(pickedFile.path);
-        Product p = Product(pickedFile.path, dropdownvalue, true);
+        Product p = Product(dropdownvalue, true);
         p.qty.text = qtyName.text;
+        p.path.text = pickedFile.path;
         // qtyName.text = "0";
         setState(() {});
         // qtyName.text = "0";
@@ -88,13 +97,21 @@ class _CreateNewListState extends State<CreateNewList> {
             child: Column(
               children: [
                 Container(
+                  height: 50,
                   decoration: BoxDecoration(
                       border: Border.all(width: 1),
                       borderRadius: BorderRadius.circular(15)),
                   // width: width / 2,
                   child: Center(
                     child: Padding(
-                        padding: EdgeInsets.all(4), child: Text("List Name")),
+                        padding: EdgeInsets.all(4),
+                        child: Center(
+                          child: TextField(
+                            decoration: InputDecoration(
+                                hintText: "List Name",
+                                border: InputBorder.none),
+                          ),
+                        )),
                   ),
                 ),
                 buildTitle(context),
@@ -103,7 +120,6 @@ class _CreateNewListState extends State<CreateNewList> {
                         .map(
                             (e) => buildseries(context, e, products.indexOf(e)))
                         .toList()),
-                buildseries(context, Product("path", 1, false), -1),
 
                 // buildseries(context),
                 // SizedBox(
@@ -141,8 +157,6 @@ class _CreateNewListState extends State<CreateNewList> {
       ),
     );
   }
-
-  TextEditingController productName = TextEditingController();
 
   Padding buildTitle(BuildContext context) {
     return Padding(
@@ -260,7 +274,7 @@ class _CreateNewListState extends State<CreateNewList> {
                   padding: const EdgeInsets.all(4.0),
                   child: Center(
                     child: Text(
-                      "${index == -1 ? products.length : index}",
+                      "${index + 1}",
                     ),
                   ),
                 ),
@@ -278,17 +292,36 @@ class _CreateNewListState extends State<CreateNewList> {
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),
                         border: Border.all(color: Colors.black)),
-                    child: index == -1
-                        ? Center(
-                            child: TextField(
-                            controller: productName,
+                    child: e.camera == true
+                        ? Image.file(File(e.path.text))
+                        : TextField(
+                            controller: e.path,
                             decoration:
                                 InputDecoration(hintText: "Enter Product"),
-                          ))
-                        // ignore: unrelated_type_equality_checks
-                        : e.camera == true
-                            ? Image.file(File(e.path))
-                            : Center(child: Text(e.path))),
+                            onChanged: (value) {
+                              bool next = false;
+                              Product delete;
+                              products.forEach((element) {
+                                if (element.path.text.length == 0) {
+                                  next = true;
+                                  delete = element;
+                                }
+                              });
+
+                              if (value.isNotEmpty) {
+                                if (next == false) {
+                                  Product p = Product(dropdownvalue, false);
+                                  products.add(p);
+                                  setState(() {});
+                                }
+                              } else {
+                                if (next == true) {
+                                  products.remove(delete);
+                                  setState(() {});
+                                }
+                              }
+                            },
+                          )),
               ),
               SizedBox(
                 width: 2,
@@ -299,28 +332,13 @@ class _CreateNewListState extends State<CreateNewList> {
                     borderRadius: BorderRadius.circular(5),
                     border: Border.all(color: Colors.black)),
                 child: Center(
-                    child:
-                        // index == -1
-                        //     ?
-                        TextField(
-                  // onChanged: (value) {
-                  //   if (index != -1) {
-                  //     e.qty = double.parse(value);
-                  //   } else {
-                  //     qtyName.text = value;
-                  //   }
-                  // },
-
+                    child: TextField(
                   controller: index != -1 ? e.qty : qtyName,
                   keyboardType: TextInputType.number,
                   decoration: InputDecoration(
                     hintText: "Qty",
                   ),
-                )
-                    // : Container(
-                    //     height: 50,
-                    //     child: Center(child: Text(e.qty.toString())))
-                    ),
+                )),
               ),
               SizedBox(
                 width: 2,
@@ -368,29 +386,18 @@ class _CreateNewListState extends State<CreateNewList> {
               // SizedBox(
               //   width: 2,
               // ),
-              InkWell(
-                child: Icon(
-                  index != -1 ? Icons.delete_forever : Icons.add,
-                  color: index != -1 ? Colors.red : Colors.blue,
-                ),
-                onTap: () {
-                  if (index == -1) {
-                    if (productName.text.length != 0) {
-                      Product p =
-                          Product(productName.text, dropdownvalue, false);
-                      p.qty.text = qtyName.text;
-                      products.add(p);
-                      productName.clear();
-                      dropdownvalue = 0;
-                      // qtyName.text = 0.toString();
-                    }
-                  } else {
-                    products.remove(e);
-                  }
-
-                  setState(() {});
-                },
-              )
+              e.path.text.length != 0
+                  ? InkWell(
+                      child: Icon(
+                        Icons.delete_forever,
+                        color: Colors.red,
+                      ),
+                      onTap: () {
+                        products.remove(e);
+                        setState(() {});
+                      },
+                    )
+                  : Icon(Icons.delete_forever, color: Colors.transparent),
 
               // Container(
               //   height: 25,
